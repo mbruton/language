@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapt_framework>
+    <bundle>
+        <name>language</name>
+        <label>Adapt Language</label>
+        <type>extension</type>
+        <version>1.0.0</version>
+        <namespace>\adapt\language</namespace>
+        <version_status>release</version_status>
+        <availability>public</availability>
+        <description>Provides the foundation for multi-language applications.</description>
+        <copyright>2017 Matt Bruton</copyright>
+        <license>MIT</license>
+        <vendor>
+            <name>Adapt Framework</name>
+            <website>http://www.adaptframework.com/documentaion/bundles/language</website>
+        </vendor>
+        <depends_on>
+            <bundle>
+                <name>adapt</name>
+                <version>2.0</version>
+            </bundle>
+        </depends_on>
+        <schema>
+            <add>
+                <table name="language">
+                    <field name="language_id" key="primary" auto-increment="Yes">
+                        <data_type>bigint</data_type>
+                        <label>Language #</label>
+                    </field>
+                    <field name="name">
+                        <data_type>varchar</data_type>
+                        <max_length>32</max_length>
+                        <label>Name</label>
+                    </field>
+                    <field name="language_code">
+                        <data_type>varchar</data_type>
+                        <max_length>5</max_length>
+                        <label>Language code</label>
+                    </field>
+                    <field name="label">
+                        <data_type>varchar</data_type>
+                        <max_length>64</max_length>
+                        <label>Label</label>
+                    </field>
+                </table>
+                <table name="language_key">
+                    <field name="language_key_id" key="primary" auto-increment="Yes">
+                        <data_type>bigint</data_type>
+                        <label>Language Key #</label>
+                    </field>
+                    <field name="name">
+                        <data_type>varchar</data_type>
+                        <max_length>1024</max_length>
+                        <label>Name</label>
+                        <nullable>No</nullable>
+                    </field>
+                </table>
+                <table name="language_value">
+                    <field name="language_value_id" key="primary" auto-increment="Yes">
+                        <data_type>bigint</data_type>
+                        <label>Language Value #</label>
+                    </field>
+                    <field name="language_key_id" key="foreign" referenced-table-name="language_key" referenced-field-name="language_key_id">
+                        <data_type>bigint</data_type>
+                        <label>Language Key #</label>
+                    </field>
+                    <field name="language_id" key="foreign" referenced-table-name="language" referenced-field-name="language_id">
+                        <data_type>bigint</data_type>
+                        <label>Language #</label>
+                    </field>
+                    <field name="value">
+                        <data_type>text</data_type>
+                        <label>String contents for the string</label>
+                        <nullable>No</nullable>
+                    </field>
+                </table>
+            </add>
+        </schema>
+        <settings>
+            <category name="Default language">
+                <setting>
+                    <name>language.default</name>
+                    <label>Default language</label>
+                </setting>
+            </category>
+        </settings>
+    </bundle>
+</adapt_framework>
