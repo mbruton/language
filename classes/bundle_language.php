@@ -20,12 +20,18 @@ namespace adapt\language{
             if (parent::boot()){
                 
                 /**
-                 * Extend \adapt\base and add a get_text method
+                 * Extend \adapt\base and add a get_string method
                  */
                 \adapt\base::extend(
-                    'get_text',
+                    'get_string',
                     function($_this, $string_key){
-                        return "gtk:{$string_key}";
+                        $model = $_this->store('language.model');
+                        if (!$model instanceof \adapt\model || $model->name != $_this->setting('language.default')){
+                            $model = new model_language();
+                            $model->load_by_name($_this->setting('language.default'));
+                            $_this->store('language.model', $model);
+                        }
+                        return $model->get_string($string_key);
                     }
                 );
                 
