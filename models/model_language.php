@@ -105,7 +105,8 @@ namespace adapt\language{
             }
             
             $cache_key = "adapt/language/" . $this->name;
-            $strings = $this->cache->get($cache_key) || [];
+            $strings = $this->cache->get($cache_key);
+            if (!is_array($strings)) $strings = [];
             $hash_key = md5($key);
             
             if (in_array($hash_key, array_keys($strings))){

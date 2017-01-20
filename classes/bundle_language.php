@@ -78,8 +78,6 @@ namespace adapt\language{
                     }
                 }
             }
-            print_r($this->_strings);
-            exit(1);
         }
         
     }
