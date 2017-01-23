@@ -84,6 +84,17 @@
                     <label>Default language</label>
                 </setting>
             </category>
+            <category name="Language translations">
+                <setting>
+                    <name>language.highlight</name>
+                    <label>Highlight language</label>
+                    <allowed_values>
+                        <value>Yes</value>
+                        <value>No</value>
+                    </allowed_values>
+                    <default_value>No</default_value>
+                </setting>
+            </category>
         </settings>
     </bundle>
 </adapt_framework>

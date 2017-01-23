@@ -140,6 +140,10 @@ namespace adapt\language{
                     // Re-cache the strings
                     $this->cache->serialize($cache_key, $strings, 60 * 60 * 24 * 365);
                     
+                    if ($this->setting('language.highlight') == 'Yes'){
+                        $value = new html_span($value, ['class' => 'language-string translated ' . $this->name]);
+                    }
+                    
                     return $value;
                 }
             }
