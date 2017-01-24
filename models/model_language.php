@@ -8,6 +8,12 @@ namespace adapt\language{
             parent::__construct('language', $id, $data_source);
         }
         
+        public function mget_short_code(){
+            if (strlen($this->language_code) >= 2){
+                return strtolower($this->language_code, 0, 2);
+            }
+        }
+        
         public function register_string($key, $value){
             if (!$this->is_loaded){
                 $this->error('Language not loaded');
