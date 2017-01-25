@@ -44,15 +44,10 @@ namespace adapt\language{
                             $language = new model_language();
                         }
                         
-                        //if ($_this->session->is_logged_in){
-                        //    if ($language->language_id != $_this->session->user->contact->language_id){
-                        //        $language->load($_this->session->user->contact->language_id);
-                        //    }
-                        //}else{+
-                            if ($_this->setting('language.default')){
-                                $language->load_by_name($_this->setting('language.default'));
-                            }
-                        //}
+                        if ($_this->setting('language.default')){
+                            $language->load_by_name($_this->setting('language.default'));
+                        }
+                        
                         $_this->store('language.model', $language);
                         
                         return $language;

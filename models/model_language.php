@@ -137,7 +137,7 @@ namespace adapt\language{
                             new sql_cond('k.date_deleted', sql::IS, new sql_null())
                         )
                     );
-                
+                //print "<pre>{$sql}</pre>";
                 $results = $sql->execute()->results();
                 
                 if (count($results) == 1){
