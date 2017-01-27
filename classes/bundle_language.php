@@ -25,6 +25,7 @@ namespace adapt\language{
                 \adapt\base::extend(
                     'get_string',
                     function($_this, $string_key){
+                    return $string_key;
                         if ($_this->language instanceof \adapt\model && $_this->language->table_name == 'language'){
                             return $_this->language->get_string($string_key);
                         }
