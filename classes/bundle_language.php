@@ -47,6 +47,9 @@ namespace adapt\language{
                         
                         if ($_this->setting('language.default')){
                             $language->load_by_name($_this->setting('language.default'));
+                        } else {
+                            // Load english as final fallback language
+                            $language->load_by_name('en_gb');
                         }
                         
                         $_this->store('language.model', $language);
