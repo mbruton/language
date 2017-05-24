@@ -10,7 +10,7 @@ namespace adapt\language{
         
         public function mget_short_code(){
             if (strlen($this->language_code) >= 2){
-                return strtolower($this->language_code, 0, 2);
+                return strtolower($this->language_code);
             }
         }
         
