@@ -133,7 +133,7 @@ namespace adapt\language{
                     )
                     ->where(
                         new sql_and(
-                            new sql_cond('k.name', sql::EQUALS, q($key)),
+                            new sql_cond('k.key_name', sql::EQUALS, q($key)),
                             new sql_cond('k.date_deleted', sql::IS, new sql_null())
                         )
                     );

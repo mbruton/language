@@ -4,7 +4,7 @@
         <name>language</name>
         <label>Adapt Language</label>
         <type>extension</type>
-        <version>0.7.0</version>
+        <version>0.7.1</version>
         <namespace>\adapt\language</namespace>
         <version_status>release</version_status>
         <availability>public</availability>
@@ -49,7 +49,7 @@
                         <data_type>bigint</data_type>
                         <label>Language Key #</label>
                     </field>
-                    <field name="name">
+                    <field name="key_name">
                         <data_type>varchar</data_type>
                         <max_length>1024</max_length>
                         <label>Name</label>
