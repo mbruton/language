@@ -30,7 +30,7 @@ namespace adapt\language{
             }else{
                 // Does the key exist?
                 $model_key = new model_language_key();
-                if ($model_key->load_by_name($key)){
+                if ($model_key->load_by_key_name($key)){
                     // Does the value exist?
                     $sql = $this->data_source->sql;
                     
@@ -47,7 +47,7 @@ namespace adapt\language{
                         )
                         ->where(
                             new sql_and(
-                                new sql_cond('k.name', sql::EQUALS, q($key)),
+                                new sql_cond('k.key_name', sql::EQUALS, q($key)),
                                 new sql_cond('k.date_deleted', sql::IS, new sql_null())
                             )
                         );

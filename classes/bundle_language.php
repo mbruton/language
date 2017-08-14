@@ -35,6 +35,44 @@ namespace adapt\language{
                 );
                 
                 /**
+                 * Extend \adapt\base and add a get_string method
+                 */
+                \adapt\language\model_language_key::extend(
+                        'load_by_keyname',
+                    function($_this,$key){
+//                        $this->initialise();
+
+                            /* Make sure name is set */
+                            if (isset($key)){
+                            $sql = $_this->data_source->sql;
+
+                            $sql->select('*')
+                                ->from('language_key', 'lk')
+                                ->where(
+                                    new sql_and(
+                                        new sql_cond('lk.key_name', sql::EQUALS, q($key)),
+                                        new sql_cond('lk.date_deleted', sql::IS, sql::NULL)
+                                    )
+                                );
+
+                            /* Get the results */
+                            $results = $sql->execute()->results();
+
+                            if (count($results) == 1){
+                                    return $_this->load_by_data($results[0]);
+                            }elseif(count($results) == 0){
+                                $this->error("Unable to find a record with Language keyname '{$key}'");
+                            }elseif(count($results) > 1){
+                                $this->error(count($results) . " records found for Language keyname '{$key}'.");
+                            }
+                        }else{
+                            $this->error('Unable to load by keyname, no key name supplied');
+                        }
+                        return false;
+                    }
+                );
+                
+                /**
                  * Extend \adapt\base and add a language property
                  */
                 \adapt\base::extend(
