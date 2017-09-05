@@ -4,7 +4,7 @@
         <name>language</name>
         <label>Adapt Language</label>
         <type>extension</type>
-        <version>0.7.1</version>
+        <version>0.7.2</version>
         <namespace>\adapt\language</namespace>
         <version_status>release</version_status>
         <availability>public</availability>
